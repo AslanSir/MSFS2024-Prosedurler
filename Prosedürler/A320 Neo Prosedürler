@@ -184,7 +184,10 @@ SEAT BELTS: OFF
 * (TOP OF DESCENT'E YAKLAŞILDIĞINDA)
 * SPD: MANAGEMENT
 * ALTITUDE: "Chart Alçalmaya Başlama (G/S) İrtifası"
-* SEAT BELTS: ON
+* SEAT BELTS: OFF
+RAD-NAV > FREQ > "LOC FREQ"
+RAD-NAV > CRS > "Final Apch Crs"
+LS: ON
 
 ----------------------------------------------------------------------------------------------------------------
 6) ALÇALMA (DESCENT) (* TOP OF DESCENT'E ULAŞILDIĞINDA)
