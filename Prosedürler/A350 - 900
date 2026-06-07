@@ -1,281 +1,82 @@
-----------------------------------------------------------------------------------------------------------------
-ANAHTARLAR
-----------------------------------------------------------------------------------------------------------------
-
-*   Şart ve Koşul
-?   Kontrol Etme
-#   Bekleme
-""  Girilecek Değer
-/   Veya
-
-----------------------------------------------------------------------------------------------------------------
-INIBUILDS A330-200RR PROSEDÜRÜ
-----------------------------------------------------------------------------------------------------------------
+INIBUILDS A350 PROSEDÜRÜ
 1) BAŞLATMA (COLD AND DARK STARTUP)
-----------------------------------------------------------------------------------------------------------------
-
-BATTERY 1-2: ON
-* EXTERNAL POWER 1 & 2: ON
-
-IR 1-2-3: NAV
-GND CTL: ON
-CVR TEST (SESLİ KONTROL)
-CREW SUPPLY: ON
-
-EMER EXIT LT: ARM
-NO PORTABLE (NO SMOKING): AUTO
-SEAT BELTS: ON
-NAV & LOGO: 2
-
-OIS (Onboard Information System) > FLT OPS MENU > FLT OPS STS > SIMBRIEF IMPORT
-OIS (Onboard Information System) > LOADSHEET > SIMBRIEF IMPORT
-OIS (Onboard Information System) > LOADSHEET > SET ZFW
-OIS (Onboard Information System) > LOADSHEET > SET FUEL
-
-OIS (Onboard Information System) > T.O PERF > SYNC SIMBRIEF & SYNC & COMPUTE
-
-MCDU MENU > ACTIVE > INIT > CPNY F-PLN REQUEST & INSERT
-MCDU MENU > ACTIVE > INIT > CRS TEMP (YENİLE)
-MCDU MENU > ACTIVE > INIT > DEPARTURE > "KALKIŞ & İNİŞ AYARLA"
-MCDU MENU > ACTIVE > INIT > FUEL & LOAD > "LOAD SHEETE GÖRE DOLDUR" > ZFW & ZFWCG % BLOCK (FUEL LOAD) & PAX NBR
-MCDU MENU > ACTIVE > T.O PERF > SENT TO FMS IN OIS
-
-F-PLN > KALKIŞ HAVALİMANI > DEPARTURE > "OFP Kalkış Havalimanı Runway" > "SID" (DCT İSE NO SID) > INSERT
-F-PLN > İNİŞ HAVALİMANI > ARRIVAL > "OFP İniş Havalimanı Runway" > "STAR" (DCT İSE NO STAR) > "VIA" (VARSA UYGUN OLAN) > INSERT
-? ROTADA DISCONTINUITY VE MANUAL KALMAMALI
-? ROTANIN TAMAMINI KONTROL ETME
-
-
-
-
-T.O PERF > BAROMETRE: "Kalkış Havalimanı QNH"
-ALTITUDE: "OFP Seyir İrtifası"
-FD: ON
-CSTR: ON
-
-APU (ECAM)
-PUMP L TK MAIN & PUMP L & PUMĞ R & PUMP R TK MAIN: ON
-APU MASTER SW: ON
-# 3 SANİYE
-START
-
-? APU AVAIL OLDUĞUNDA
-EXTERNAL POWER: OFF
-APU BLEED: ON
-TABLET > GROUND SERVICES > GPU > OFF
-TABLET > GROUND SERVICES > CHOCKS & CONES > OFF
-
-----------------------------------------------------------------------------------------------------------------
-2) GERİ İTME (PUSHBACK) VE MOTOR ÇALIŞTIRMA (* COLD AND DARK STARTUP TAMAMLANDIĞINDA)
-----------------------------------------------------------------------------------------------------------------
-
-? YOLCU - KARGO ALIMI TAMAMLANDIĞINDA
-BEACON: ON
-
-ENG (ECAM)
-? THROTTLE IDLE
-MODE: IGN START
-ENG 2: ON
-
-? SAĞ MOTOR DEĞERLERİ STABİL OLDUĞUNDA
-ENG 1: ON
-
-? SOL MOTOR DEĞERLERİ STABİL OLDUĞUNDA
-MODE: NORM
-APU BLEED: OFF
-APU MASTER SW: OFF
-
-* (BUZLANMA İHTİMALİNDE)
-* ANTI ICE WING: ON
-* ANTI ICE ENG 1-2: ON
-* PROBE/WINDOW HEAT: ON
-
-FLAP: [Flap Değeri]
-SPEED BRAKE: ARM
-TRİM: [Trim Değeri]
-
-F CTL (ECAM)
-AILERON: TAM SOL + CENTER + TAM SAĞ
-AILERON: TAM İLERİ + CENTER + TAM GERİ
-RUDDER: TAM SOL + CENTER + TAM SAĞ
-SPEED BRAKE: FULL + RET + ARMED ON
-ENG (ECAM)
-
-TABLET > GROUND SERVICES > CONNECT TUG > ON
-TABLET > GROUND SERVICES > PUSHBACK > START
-
-? TUG YERLEŞTİĞİNDE
-PARKING BRAKE: OFF
-PUSHBACK YÖNLENDİRMELERİ
-
-? PUSHBACK TAMAMLANDIĞINDA
-TABLET > GROUND SERVICES > PUSHBACK > STOP
-PARKING BRAKE: ON
-
-RWY TURN: ON
-NOSE: TAXI
-AUTO BRK > MAX: ON
-GCS: AUTO
-PWS: AUTO
-DISPLAY: ALL WX
-ATC > MODE: AUTO
-CALLS > FWD
-
-PARKING BRAKE: OFF
-PİST BAŞINA TAKSİ
-
-----------------------------------------------------------------------------------------------------------------
-3) KALKIŞ (TAKE OFF) (* PİST GİRİŞİNE VARILDIĞINDA)
-----------------------------------------------------------------------------------------------------------------
-
-PARKING BRAKE: ON
-STROBE: ON
-LAND L-R: ON
-NOSE: T O
-TCAS: TA/RA
-ALT RPTG: ON
-TCAS TRAFFIC: ALL
-
-T O CONFIG (ECAM)
-? CONFIG ÜZERİNDE MAVİ YAZI OLMAMALI
-
-* START FLIGHT (NEWSKY)
-
-PARKING BRAKE: OFF
-PİST BAŞINA TAKSİ
-
-? PİST BAŞINA VARILDIĞINDA
-KRONOMETRE: BAŞLAT
-KALKIŞ
-
-----------------------------------------------------------------------------------------------------------------
-4) TIRMANMA (CLIMB) (* TEKER YERDEN KESİLDİĞİNDE)
-----------------------------------------------------------------------------------------------------------------
-
-LANDING GEAR: UP
-
-* (FLAP HIZINA ULAŞILDIĞINDA)
-* FLAP: 0
-* SPEED BRAKE: ARMED OFF
-
-THROTTLE: CLIMB (UÇAK UYARDIĞINDA)
-AP 1: ON
-
-* (QNH YANIP SÖNMEYE BAŞLADIĞINDA)
-* BAROMETRE: STD
-* RWY TURN: OFF
-* LAND L-R: OFF
-* NOSE: OFF
-
-----------------------------------------------------------------------------------------------------------------
-5) SEYİR (CRUISE) (* TOP OF CLIMB'E ULAŞILDIĞINDA)
-----------------------------------------------------------------------------------------------------------------
-
-SEAT BELTS: OFF
-* BAROMETRE: STD
-* (TOP OF DESCENT'E YAKLAŞILDIĞINDA)
-* SPD: MANAGEMENT
-* ALTITUDE: "Chart Alçalmaya Başlama (G/S) İrtifası"
-* SEAT BELTS: OFF
-RAD-NAV > FREQ > "LOC FREQ"
-RAD-NAV > CRS > "Final Apch Crs"
-LS: ON
 
-----------------------------------------------------------------------------------------------------------------
-6) ALÇALMA (DESCENT) (* TOP OF DESCENT'E ULAŞILDIĞINDA)
-----------------------------------------------------------------------------------------------------------------
+    BATTERY 1-2: ON
 
-ALTITUDE: MANAGEMENT
+    EXTERNAL POWER 1 & 2: ON
 
-* SPEED BRAKE: 1/2 / FULL (MORE DRAG UYARISI GELDİĞİNDE VEYA YOYO AŞAĞIDA KALDIĞINDA) (UÇAK UYARDIĞINDA VEYA YOYO YAKALANDIĞINDA KAPATIN)
+    IR 1-2-3 (IRS): NAV
 
-* (STD YANIP SÖNMEYE BAŞLADIĞINDA)
-* BAROMETRE: "İniş Havalimanı QNH"
-* AUTO BRK > LO: ON
-* RWY TURN: ON
-* LAND L-R: ON
-* NOSE: T O
+    CREW SUPPLY: ON
 
-? RADNAV ÜZERİNDE ILS/FREQ VE CRS GİRİLMİŞ OLMALI
+    EMER EXIT LT: ARM
 
-* (HAVALİMANI MEYDANINA YAKLAŞILDIĞINDA)
-* PERF > APPR > QNH: "İniş Havalimanı QNH"
-* PERF > APPR > TEMP: "İniş Havalimanı Hava Sıcaklığı"
-* PERF > APPR > MAG WIND: "İniş Havalimanı Rüzgâr Açısı / İniş Havalimanı Rüzgâr Hızı"
-* PERF > APPR > BARO: "Chart Baro İrtifası"
-* PERF > DES > ACTIVATE APPR PHASE - CONFIRM
+    NO SMOKING / SEAT BELTS: AUTO
 
-PİSTE YAKLAŞIRKEN FLAPLARI UYGUN HIZLARDA KADEMELİ OLARAK AÇMA
+    NAV / LOGO: ON / AUTO
 
-* (SON BACAĞIN BAŞINA YAKLAŞILDIĞINDA)
-* LS: ON
-* LOC: ON
-* CALLS > ALL
+    TABLET AYARLARI:
+        SETTINGS > 3RD PARTY > SIMBRIEF ID: "GİR"
+        SETTINGS > UNITS: KG (Litre yerine)
+        SETTINGS > RUDDER CONTROLLER: ON (Taksi için kritik)
 
-? NAV-LOC GEÇİŞİNİ TAKİP ETME
+    FMS / MCDU HAZIRLIK:
+        OIS > LOADSHEET > SIMBRIEF IMPORT > SET ZFW & FUEL
+        MCDU > INIT > CPNY F-PLN REQUEST > INSERT
+        F-PLN: SID/STAR manuel giriş (gerekiyorsa) > DISCONTINUITY SİL > INSERT
+        PERF > TAKE OFF: V hızlarını hesapla > SYNC FMS
 
-----------------------------------------------------------------------------------------------------------------
-7) SON YAKLAŞMA (FINAL APPROACH) (* PİSTE HİZALANILDIĞINDA)
-----------------------------------------------------------------------------------------------------------------
+    APU ÇALIŞTIRMA:
+        FUEL PUMPS: ON
+        APU MASTER SW: ON
+        APU START
+        APU AVAIL (YEŞİL) > EXT PWR: OFF > APU BLEED: ON
 
-APPR: ON
-LANDING GEAR: DOWN
-FLAP: 4 (FULL)
-SPEED BRAKE: ARMED ON
+2) PUSHBACK VE MOTOR ÇALIŞTIRMA
 
-? CONFIG ÜZERİNDE MAVİ YAZI OLMAMALI
-? G/S YAKALAMAYI TAKİP ETME
+    BEACON: ON
+    MODE SELECTOR: IGN START
+    ENG 2: ON (Sağ motor)
+    ENG 1: ON (Sol motor)
+    Motorlar stabil olduktan sonra;
+    MODE SELECTOR: NORM
+    APU BLEED / APU MASTER: OFF
+    TRIM: "OFP Değeri"
+    FLAP: 1
+    SPEED BRAKE: ARM (Tıkla)
+    TO CONFIG: BAS (Yeşil olmalı)
 
-----------------------------------------------------------------------------------------------------------------
-8) İNİŞ - LANDING (* MINIMUM DUYULDUĞUNDA)
-----------------------------------------------------------------------------------------------------------------
+3) KALKIŞ (TAKE OFF)
 
-DEVAM ET (CONTINUE) - PAS GEÇ (GO AROUND) KARARININ VERİLMESİ
+    TAXI LIGHT: ON
+    RUNWAY (PİST BAŞI): LANDING LT: ON / STROBE: ON / TAKE-OFF: ON
+    TRANS-PONDER (SUR): MOD: TA/RA (veya C)
+    KRONOMETRE: BAŞLAT
+    KALKIŞ: TOGA / FLEX
 
-* AP 2: ON (OTOMATİK İNİŞ YAPILACAKSA)
-* AP 1: OFF (MANUEL İNİŞ YAPILACAKSA)
-* THROTTLE: IDLE / REVERSE (RETARD DUYULDUĞUNDA)
+4) TIRMANMA VE SEYİR (CLIMB & CRUISE)
 
-----------------------------------------------------------------------------------------------------------------
-9) KAPILARA TAKSİ (* PİSTTEN ÇIKILIP BEKLEME NOKTASINDA DURULDUĞUNDA)
-----------------------------------------------------------------------------------------------------------------
+    GEAR: UP
+    FLAP: UP (0)
+    AUTOPILOT: ON
+    SPEED BRAKE: RETRACTED (ARM OFF)
+    10.000 FT: LANDING LT: OFF
+    12.000 FT: BARO > STD
 
-PARKING BRAKE: ON
-KRONOMETRE: DURDUR
+5) ALÇALMA (DESCENT) VE YAKLAŞMA
 
-FLAP: 0
-SPEED BRAKE: ARMED OFF
+    TOP OF DESCENT (TOD): ALÇALMA BAŞLAT
+    10.000 FT: LANDING LT: ON
+    BARO: "GÜNCEL QNH"
+    ILS FREQ/CRS: RAD-NAV > "FREQ" (Manuel girilmesi gerekebilir)
+    TERRAIN / CSTR / LS: ON
+    PERF > APPR: GİR
 
-STROBE: OFF
-LAND L-R: OFF
-NOSE: TAXI
+6) İNİŞ VE PARK
 
-GCS: OFF
-PWS: OFF
-ATC > MODE: STBY
-TCAS: STBY
-
-* CLOSE FLIGHT (NEWSKY)
-
-APU MASTER SW: ON
-# 3 SANİYE
-START
-
-PARKING BRAKE: OFF
-KAPIYA TAKSİ
-
-----------------------------------------------------------------------------------------------------------------
-10) PARK (* PARK ALANINA ULAŞILDIĞINDA)
-----------------------------------------------------------------------------------------------------------------
-
-PARKING BRAKE: ON
-ENG 1-2: OFF
-
-* (MOTORLAR DURDUĞUNDA)
-* EXTERNAL POWER: ON
-* APU MASTER SW: OFF
-
-SEAT BELTS: OFF
-YOLCU - KARGO BOŞALTMA (DEBOARDING)
-
-ALL (HER ŞEY): OFF / DEFAULT (STANDART)
+    FLAP: KADEMELİ AÇ / FULL
+    GEAR: DOWN
+    AUTOPILOT: OFF
+    İniş sonrası: APU: ON / LANDING LT: OFF / STROBE: OFF
+    Park: PARK BRAKE: ON / ENGINE 1-2: OFF / EXT PWR: ON
+    DEBOARDING: BAŞLAT
