@@ -26,6 +26,7 @@ INIBUILDS A350 PROSEDÜRÜ
         MCDU > INIT > CPNY F-PLN REQUEST > INSERT
         F-PLN: SID/STAR manuel giriş (gerekiyorsa) > DISCONTINUITY SİL > INSERT
         PERF > TAKE OFF: V hızlarını hesapla > SYNC FMS
+        F-PLN > KALKIŞ HAVALİMANI > FIX INFO > "AYARLA"
 
 QNH Değeri
 Altimetre değeri
